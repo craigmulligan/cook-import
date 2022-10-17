@@ -13,7 +13,13 @@ def get_urls():
         next_url = data["nextUrl"]
 
         for item in data["items"]:
-            run(host + item["url"], True)
+            try:
+                run(host + item["url"], True)
+            except:
+                pass
+
+        if next_url is None:
+            break
 
         sleep(5)
 
